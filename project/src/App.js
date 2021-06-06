@@ -1,4 +1,5 @@
 import './App.css';
+import words from './data';
 import {
 	BrowserRouter,
   Switch,
@@ -24,11 +25,11 @@ function App() {
               </Route>
 
               <Route exact path="/game">
-                <CardSlider></CardSlider>
+                <CardSlider />
               </Route>
 
               <Route exact path="/cards">
-                <CardList/>
+                <CardList words={words}/>
               </Route>
 
               <Route exact path="/">
