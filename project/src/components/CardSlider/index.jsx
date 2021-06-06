@@ -24,9 +24,13 @@ export default function CardSlider(props) {
         showNext={showNext}
         number={currentItem + 1}
         total={words.length}
-        children={<Card english={words[currentItem].english}
-        transcription={words[currentItem].transcription}
-        russian={words[currentItem].russian}
-        tags={words[currentItem].tags}/>}/>
+        children={
+            <Card
+                english={words[currentItem].english}
+                transcription={words[currentItem].transcription}
+                russian={words[currentItem].russian}
+                tags={words[currentItem].tags}
+            />}
+        />
     )}
 }
