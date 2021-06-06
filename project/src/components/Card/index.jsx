@@ -1,20 +1,6 @@
 import React from 'react';
-
-function WordInfo(props) {
-    return (
-        <div className="card-content">
-            <div className="card-transcr">{props.transcription}</div>
-            <div className="card-def">{props.russian}</div>
-            <div className="card-category">{props.tags}</div>
-        </div>
-    );
-}
-
-function ShowWord(props) {
-    return(
-        <button onClick={props.show} className="card-btn">проверить</button>
-    );
-}
+import WordInfo from './WordInfo';
+import ShowWord from './ShowWord';
 export default class Card extends React.Component {
     constructor(props) {
         super(props);
