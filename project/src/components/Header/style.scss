@@ -1,0 +1,52 @@
+.header {
+  position: sticky;
+  top: 0;
+  min-height: 2em;
+  padding: 1.5rem 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2rem;
+  background-color: $supportColorWhite;
+  color: $supportColorWhite;
+}
+
+.header__nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header__nav__link {
+  font-family: "Tenor Sans";
+  list-style: none;
+  text-decoration: none;
+  color: $supportColorDark;
+  &:hover {
+    color: $accentColor2;
+  }
+  &:active {
+    color: $accentColor2;
+  }
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.head-title {
+  font-family: "Playfair Display";
+  font-size: $headTitleFontSize;
+  font-weight: bold;
+  color: $accentColor5;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:hover {
+    color: $accentColor2;
+  }
+}

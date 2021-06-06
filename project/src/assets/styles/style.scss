@@ -1,2 +1,9 @@
 @import "./vars";
+@import "./mixins";
+@import "../../components/Header/style.scss";
+@import "../../components/MainPage/style.scss";
 @import "../../components/NotFound/style.scss";
+@import "../../components/WordList/style.scss";
+@import "../../components/Card/style.scss";
+@import "../../components/CardList/style.scss";
+@import "../../components/CardSlider/style.scss";
