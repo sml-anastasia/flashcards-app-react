@@ -1,0 +1,21 @@
+input {
+  @include word-input;
+  &:hover {
+    border: 1.5px solid $accentColor3;
+  }
+}
+
+.new-word_btn {
+  @include btn;
+  background-color: $accentColor2;
+  color: $supportColorWhite;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $accentColor4;
+  }
+
+  &:active {
+    background-color: $accentColor3;
+  }
+}

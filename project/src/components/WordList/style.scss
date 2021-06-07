@@ -71,4 +71,17 @@
       width: 10%;
     }
   }
+  font-family: "Tenor Sans";
+}
+
+.words-list {
+  color: $supportColorDark;
+}
+
+.words-list_item {
+  font-family: "Tenor Sans";
+  font-size: $plainTitleFontSize;
+  font-weight: 700;
+  color: $accentColor2;
+  text-align: center;
 }
