@@ -9,7 +9,7 @@ const Card = (props) => {
             {props.pressed ? (
                 <WordInfo transcription={props.transcription} russian={props.russian} tags={props.tags}></WordInfo>
                     ) : (
-                <button onClick={props.show} className="card-btn">проверить</button>
+                <ShowWord show={props.handleChange}></ShowWord>
             )}
         </div>
     );
