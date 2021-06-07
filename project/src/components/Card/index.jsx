@@ -17,12 +17,12 @@ export default class Card extends React.Component {
         );
     }
     render() {
-        const {transcription, russian, tags, english} = this.props;
+        const {transcription, russian, tags, english, id} = this.props;
         return(
             <div className="card">
                 <div className="card-word">{english}</div>
                 {this.state.pressed ? (
-                    <WordInfo transcription={transcription} russian={russian} tags={tags}></WordInfo>
+                    <WordInfo transcription={transcription} russian={russian} tags={tags} id={id}></WordInfo>
                 ) : (
                     <ShowWord show={this.handleChange}></ShowWord>
                 )}

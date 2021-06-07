@@ -10,6 +10,7 @@ export default function CardBox(props) {
             alt="left-arrow"
             onClick={props.showPrev} />
             <div>
+                <p>изучено слов: {props.learned}</p>
                 <div>{props.children}</div>
                 <p className="card-counter">
                     {props.number} / {props.total}
