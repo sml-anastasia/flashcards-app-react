@@ -19,7 +19,10 @@ export default function CardSlider(props) {
     }
 
     if (currentItem >= words.length) {
-        return (<div>finish</div>)
+        return (<div>
+                <div>карточки закончились!</div>
+                <div>Всего изучено слов: {learnedWordsTotal}</div>
+            </div>)
     } else {
         return (
             <CardBox
