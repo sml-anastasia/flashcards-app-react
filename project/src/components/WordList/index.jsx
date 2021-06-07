@@ -1,33 +1,10 @@
 import React from 'react';
+import AddWordForm from './AddWordForm';
+import WordItem from './WordItem';
 import iconSave from "./assets/icon-save.svg";
 import iconAdd from "./assets/icon-add.svg";
 import iconPen from "./assets/icon-pen.svg";
 import iconDelete from "./assets/icon-delete.svg";
-
-function AddWordForm(props) {
-    return (
-        <div className="word-info">
-            <span>{props.id}</span>
-            <span><input className="word-english" value={props.english} placeholder="enter word"/></span>
-            <span><input className="word-transcription" value={props.transcription} placeholder="enter transcription"/></span>
-            <span><input className="word-russian" value={props.russian} placeholder="enter translate"/></span>
-            <span><input className="word-tags" value={props.tags} placeholder="enter tags"/></span>
-        </div>
-    );
-}
-
-function WordItem(props) {
-    return (
-        <div className="word-info">
-            <span>{props.id}</span>
-            <span>{props.english}</span>
-            <span>{props.transcription}</span>
-            <span>{props.russian}</span>
-            <span>{props.tags}</span>
-        </div>
-    );
-}
-
 export default class List extends React.Component{
     constructor(props) {
         super(props);
