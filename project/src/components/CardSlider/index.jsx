@@ -10,7 +10,6 @@ export default function CardSlider(props) {
     const showNext = () => {
         setPosition(currentItem + 1);
         setLearnedWordsTotal(learnedWordsTotal + 1);
-        console.log(learnedWordsTotal);
     }
 
     const showPrev = () => {
