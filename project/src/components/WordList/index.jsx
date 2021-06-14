@@ -48,15 +48,15 @@ export default class List extends React.Component{
                 <div className="line">
                     <AddWordForm id={id} english={this.state.english} transcription={this.state.transcription} russian={this.state.russian} tags={this.state.tags} checkInput={this.handleChangeInput}></AddWordForm>
                     <div className="btn-box">
-                    <button className="btn_add">
-                        <img src={iconSave} alt="icon save" onClick={this.saveChanges}/>
-                    </button>
-                    <button className="btn_close" onClick={this.handleChange}>
-                        <img src={iconAdd} alt="icon add"/>
-                    </button>
-                    <button className="btn_del">
-                        <img src={iconDelete} alt="icon delete"/>
-                    </button>
+                        <button className="btn_add" onClick={this.saveChanges}  disabled={this.state.isValid ? false : true}>
+                            <img src={iconSave} alt="icon save" />
+                        </button>
+                        <button className="btn_close" onClick={this.handleChange}>
+                            <img src={iconAdd} alt="icon close"/>
+                        </button>
+                        <button className="btn_del">
+                            <img src={iconDelete} alt="icon delete"/>
+                        </button>
                     </div>
                 </div>
                 :
