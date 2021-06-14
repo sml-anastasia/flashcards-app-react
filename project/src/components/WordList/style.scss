@@ -85,3 +85,13 @@
   color: $accentColor2;
   text-align: center;
 }
+
+.word-list__error-message {
+  font-weight: 600;
+  color: $accentColor3;
+  text-align: end;
+}
+
+.errorInput {
+  border: 0.5px solid red;
+}

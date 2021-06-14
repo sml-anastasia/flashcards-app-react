@@ -9,7 +9,12 @@ export default class List extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            pressed: false
+            pressed: false,
+            english: '',
+            transcription: '',
+            russian: '',
+            tags: '',
+            isValid: true
         };
     }
 
@@ -20,16 +25,31 @@ export default class List extends React.Component{
             }
         );
     }
+
+    handleChangeInput = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    saveChanges = () => {
+        if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.russian.length === 0 || this.state.tags.length === 0) {
+            this.setState({isValid: false})
+        } else {
+            this.setState({isValid: true})
+        }
+    }
+
     render() {
         const {id, english, transcription, russian, tags} = this.props;
         return(
             <div>
+            {!this.state.isValid && <div className="word-list__error-message">заполните поля</div>}
+                
             {this.state.pressed ?
                 <div className="line">
-                    <AddWordForm id={id} english={english} transcription={transcription} russian={russian} tags={tags}></AddWordForm>
+                    <AddWordForm id={id} english={this.state.english} transcription={this.state.transcription} russian={this.state.russian} tags={this.state.tags} checkInput={this.handleChangeInput}></AddWordForm>
                     <div className="btn-box">
                     <button className="btn_add">
-                        <img src={iconSave} alt="icon save"/>
+                        <img src={iconSave} alt="icon save" onClick={this.saveChanges}/>
                     </button>
                     <button className="btn_close" onClick={this.handleChange}>
                         <img src={iconAdd} alt="icon add"/>
