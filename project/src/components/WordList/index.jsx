@@ -10,10 +10,10 @@ export default class List extends React.Component{
         super(props);
         this.state = {
             pressed: false,
-            english: '',
-            transcription: '',
-            russian: '',
-            tags: '',
+            english: props.english,
+            transcription: props.transcription,
+            russian: props.russian,
+            tags: props.tags,
             isValid: true
         };
     }
@@ -46,9 +46,9 @@ export default class List extends React.Component{
                 
             {this.state.pressed ?
                 <div className="line">
-                    <AddWordForm id={id} english={this.state.english} transcription={this.state.transcription} russian={this.state.russian} tags={this.state.tags} checkInput={this.handleChangeInput}></AddWordForm>
+                    <AddWordForm id={id} english={this.state.english} transcription={this.state.transcription} russian={this.state.russian} tags={this.state.tags} checkInput={this.handleChangeInput}/>
                     <div className="btn-box">
-                        <button className="btn_add" onClick={this.saveChanges}  disabled={this.state.isValid ? false : true}>
+                        <button className="btn_add" onClick={this.saveChanges} disabled={this.state.isValid ? false : true}>
                             <img src={iconSave} alt="icon save" />
                         </button>
                         <button className="btn_close" onClick={this.handleChange}>
@@ -61,7 +61,7 @@ export default class List extends React.Component{
                 </div>
                 :
                 <div className="line">
-                    <WordItem id={id} english={english} transcription={transcription} russian={russian} tags={tags}></WordItem>
+                    <WordItem id={id} english={english} transcription={transcription} russian={russian} tags={tags}/>
                     <div className="btn-box">
                     <button className="btn_edit" onClick={this.handleChange}>
                         <img src={iconPen} alt="icon pen"/>
