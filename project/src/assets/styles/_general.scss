@@ -1,4 +1,4 @@
-input {
+.word-input {
   @include word-input;
   &:hover {
     border: 1.5px solid $accentColor3;

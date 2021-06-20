@@ -5,7 +5,7 @@ export default function AddWordForm(props) {
             <span>
                 <input
                 name='english'
-                className="word-input"
+                className={`word-input ${props.isValidClass ? '' : 'word-list__error-input'}`}
                 value={props.english}
                 onChange={props.checkInput}
                 placeholder="enter word"/>
@@ -13,7 +13,7 @@ export default function AddWordForm(props) {
             <span>
                 <input 
                 name='transcription' 
-                className="word-input" 
+                className={`word-input ${props.isValidClass ? '' : 'word-list__error-input'}`} 
                 value={props.transcription} 
                 onChange={props.checkInput} 
                 placeholder="enter transcription"/>
@@ -21,7 +21,7 @@ export default function AddWordForm(props) {
             <span>
                 <input 
                 name='russian' 
-                className="word-input" 
+                className={`word-input ${props.isValidClass ? '' : 'word-list__error-input'}`} 
                 value={props.russian} 
                 onChange={props.checkInput} 
                 placeholder="enter translate"/>
@@ -29,7 +29,7 @@ export default function AddWordForm(props) {
             <span>
                 <input 
                 name='tags' 
-                className="word-input" 
+                className={`word-input ${props.isValidClass ? '' : 'word-list__error-input'}`} 
                 value={props.tags} 
                 onChange={props.checkInput} 
                 placeholder="enter tags"/>
