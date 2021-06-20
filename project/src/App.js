@@ -1,4 +1,5 @@
 import './App.css';
+import React from 'react';
 import words from './data';
 import {
 	BrowserRouter,
@@ -14,36 +15,39 @@ import CardSlider from '../src/components/CardSlider/index';
 import NotFound from '../src/components/NotFound/index';
 
 function App() {
+  // const WordsContext = React.createContext();
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <main>
-          <Switch>
-              <Route exact path="/main">
-                <MainPage />
-              </Route>
+    // <WordsContext>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <main>
+            <Switch>
+                <Route exact path="/main">
+                  <MainPage />
+                </Route>
 
-              <Route exact path="/game">
-                <CardSlider />
-              </Route>
+                <Route exact path="/game">
+                  <CardSlider />
+                </Route>
 
-              <Route exact path="/cards">
-                <CardList words={words}/>
-              </Route>
+                <Route exact path="/cards">
+                  <CardList words={words}/>
+                </Route>
 
-              <Route exact path="/">
-                <MainPage/>
-              </Route>
+                <Route exact path="/">
+                  <MainPage/>
+                </Route>
 
-              <Route>
-                <NotFound />
-              </Route>
+                <Route>
+                  <NotFound />
+                </Route>
 
-            </Switch>
-        </main>
-      </div>
-    </BrowserRouter>
+              </Switch>
+          </main>
+        </div>
+      </BrowserRouter>
+    // </WordsContext>
   );
 }
 
