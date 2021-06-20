@@ -21,7 +21,8 @@ export default class List extends React.Component{
     handleChange = () => {
         this.setState(
             {
-                pressed: !this.state.pressed
+                pressed: !this.state.pressed,
+                isValid: true
             }
         );
     }
@@ -34,7 +35,7 @@ export default class List extends React.Component{
         if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.russian.length === 0 || this.state.tags.length === 0) {
             this.setState({isValid: false})
         } else {
-            this.setState({isValid: true})
+            this.setState({isValid: true, pressed: false})
         }
     }
 
@@ -76,3 +77,10 @@ export default class List extends React.Component{
         );
     }
 }
+
+
+{/* <input className={isValid?”non-valid-class”:”valid-class”} …>
+{isValid && <input className=”non-valid-class”…>}
+{!isValid && <input className=”valid-class”…>} 
+{`${class}`}
+{`${class} class2`}*/}
