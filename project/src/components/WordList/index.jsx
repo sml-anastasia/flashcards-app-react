@@ -11,6 +11,7 @@ export default class List extends React.Component{
         this.state = {
             pressed: false,
             isValid: true,
+            id: props.id,
             english: props.english,
             transcription: props.transcription,
             russian: props.russian,
@@ -32,15 +33,50 @@ export default class List extends React.Component{
     }
 
     saveChanges = () => {
-        if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.russian.length === 0 || this.state.tags.length === 0) {
-            this.setState({isValid: false})
-        } else {
-            this.setState({isValid: true, pressed: false})
-        }
+        const requestOptions = {
+            method: 'POST',
+            body: {
+                english: this.state.english,
+                russian: this.state.russian,
+                transcription: this.state.transcription,
+                tags: this.state.tags
+                }
+            };
+        fetch(`/api/words/${this.id}/update`, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.transcription.length === 0 || this.state.tags.length === 0) {
+                    this.setState({isValid: false});
+                    response.json();
+                } else {
+                    this.setState({pressed: false});
+                }
+            } else {
+                throw new Error('Something went wrong ...');
+            }})
+    }
+
+    deleteWord = () => {
+        const requestOptions = {
+            method: 'POST',
+            body: {
+                english: this.state.english,
+                russian: this.state.russian,
+                transcription: this.state.transcription,
+                tags: this.state.tags
+                }
+            };
+        fetch(`/api/words/${this.id}/delete`, requestOptions)
+        .then(response => {
+            if (response.ok) {
+                response.json();
+            } else {
+                throw new Error('Something went wrong ...');
+            }})
     }
 
     render() {
-        const {id, english, transcription, russian, tags} = this.props;
+        const {id} = this.props;
         return(
             <div>
             {!this.state.isValid && <div className="word-list__error-message">заполните поля</div>}
@@ -64,7 +100,7 @@ export default class List extends React.Component{
                             <img src={iconAdd} alt="icon close"/>
                         </button>
                         <button className="btn_del">
-                            <img src={iconDelete} alt="icon delete"/>
+                            <img src={iconDelete} alt="icon delete" onClick={this.deleteWord}/>
                         </button>
                     </div>
                 </div>
@@ -73,16 +109,16 @@ export default class List extends React.Component{
                     <WordItem
                     key={id}
                     id={id}
-                    english={english}
-                    transcription={transcription}
-                    russian={russian}
-                    tags={tags}/>
+                    english={this.state.english}
+                    transcription={this.state.transcription}
+                    russian={this.state.russian}
+                    tags={this.state.tags}/>
                     <div className="btn-box">
                     <button className="btn_edit" onClick={this.handleChange}>
                         <img src={iconPen} alt="icon pen"/>
                     </button>
                     <button className="btn_del">
-                        <img src={iconDelete} alt="icon delete"/>
+                        <img src={iconDelete} alt="icon delete" onClick={this.deleteWord}/>
                     </button>
                     </div>
                 </div>
@@ -91,10 +127,3 @@ export default class List extends React.Component{
         );
     }
 }
-
-
-{/* <input className={isValid?”non-valid-class”:”valid-class”} …>
-{isValid && <input className=”non-valid-class”…>}
-{!isValid && <input className=”valid-class”…>} 
-{`${class}`}
-{`${class} class2`}*/}
