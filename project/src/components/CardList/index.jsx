@@ -1,5 +1,6 @@
 import React from 'react';
 import CardItem from '../Card/CardItem';
+import Loader from '../Loader/index';
 
 export default class CardList extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ export default class CardList extends React.Component {
         }
 
         if (isLoading) {
-            return <p>Loading ...</p>;
+            return <p><Loader/></p>;
         }
         return(
             <section className="card-box">
