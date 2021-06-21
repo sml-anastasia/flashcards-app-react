@@ -1,7 +1,6 @@
 import React from 'react';
 import WordList from '../WordList/index';
-// import words from '../../data';
-
+import Loader from '../Loader/index';
 export default class MainPage extends React.Component{
     constructor(props){
         super(props);
@@ -39,7 +38,7 @@ export default class MainPage extends React.Component{
         }
 
         if (isLoading) {
-            return <p>Loading ...</p>;
+            return <p><Loader/></p>;
         }
         return(
         <div className="words-list">
