@@ -1,6 +1,7 @@
 import React from 'react';
 import WordList from '../WordList/index';
 import Loader from '../Loader/index';
+import Error from '../Error/index';
 export default class MainPage extends React.Component{
     constructor(props){
         super(props);
@@ -34,11 +35,11 @@ export default class MainPage extends React.Component{
         const { words, isLoading, error } = this.state;
 
         if (error) {
-            return <p>{error.message}</p>;
+            return <Error errorMessage={error.message}/>;
         }
 
         if (isLoading) {
-            return <p><Loader/></p>;
+            return <Loader/>;
         }
         return(
         <div className="words-list">

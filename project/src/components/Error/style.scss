@@ -1,0 +1,17 @@
+.api-error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.api-error__error {
+  width: 600px;
+}
+
+.api-error__message {
+  font-family: "Tenor Sans";
+  font-size: 2rem;
+  color: $accentColor5;
+  text-align: center;
+}
