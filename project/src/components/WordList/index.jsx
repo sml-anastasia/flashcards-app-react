@@ -42,16 +42,16 @@ export default class List extends React.Component{
                 tags: this.state.tags
                 }
             };
-        fetch(`/api/words/${this.id}/update`, requestOptions)
-        .then(response => {
+            if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.transcription.length === 0 || this.state.tags.length === 0) {
+                this.setState({isValid: false});
+            } else {
+                this.setState({pressed: false});
+            }
+            fetch(`/api/words/${this.id}/update`, requestOptions)
+            .then(response => {
             if (response.ok) {
-                if (this.state.english.length === 0 || this.state.russian.length === 0 || this.state.transcription.length === 0 || this.state.tags.length === 0) {
-                    this.setState({isValid: false});
                     response.json();
                 } else {
-                    this.setState({pressed: false});
-                }
-            } else {
                 throw new Error('Something went wrong ...');
             }})
     }
@@ -60,10 +60,7 @@ export default class List extends React.Component{
         const requestOptions = {
             method: 'POST',
             body: {
-                english: this.state.english,
-                russian: this.state.russian,
-                transcription: this.state.transcription,
-                tags: this.state.tags
+                id: this.state.id
                 }
             };
         fetch(`/api/words/${this.id}/delete`, requestOptions)
