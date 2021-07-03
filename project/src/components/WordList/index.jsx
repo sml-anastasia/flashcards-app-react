@@ -5,10 +5,14 @@ import iconSave from "./assets/icon-save.svg";
 import iconAdd from "./assets/icon-add.svg";
 import iconPen from "./assets/icon-pen.svg";
 import iconDelete from "./assets/icon-delete.svg";
-export default class List extends React.Component{
+import {observer, inject} from "mobx-react";
+@inject("WordsStore")
+@observer
+class List extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            newWord:'',
             pressed: false,
             isValid: true,
             english: props.english,
@@ -16,6 +20,26 @@ export default class List extends React.Component{
             russian: props.russian,
             tags: props.tags
         };
+    }
+
+    addNewWord = () => {
+        const {newWord} = this.state;
+        const {WordsStore} = this.props;
+        if (!newWord) return;
+        WordsStore.addBook(newWord);
+        this.setState({
+            newWord:''
+        })
+    }
+
+    deleteWord = (index) => {
+        const {WordsStore} = this.props;
+        WordsStore.removeWord(index)
+    }
+    setNewWord = (e) =>{
+        this.setState({
+            newWord: e.target.value
+        })
     }
 
     handleChange = () => {
@@ -40,7 +64,8 @@ export default class List extends React.Component{
     }
 
     render() {
-        const {id, english, transcription, russian, tags} = this.props;
+        const {newWord} = this.state;
+        const {WordsStore, id, english, transcription, russian, tags} = this.props;
         return(
             <div>
             {!this.state.isValid && <div className="word-list__error-message">заполните поля</div>}
@@ -91,10 +116,10 @@ export default class List extends React.Component{
         );
     }
 }
+export default List;
 
-
-{/* <input className={isValid?”non-valid-class”:”valid-class”} …>
-{isValid && <input className=”non-valid-class”…>}
-{!isValid && <input className=”valid-class”…>} 
-{`${class}`}
-{`${class} class2`}*/}
+// {/* <input className={isValid?”non-valid-class”:”valid-class”} …>
+// {isValid && <input className=”non-valid-class”…>}
+// {!isValid && <input className=”valid-class”…>} 
+// {`${class}`}
+// {`${class} class2`}*/}
