@@ -1,10 +1,10 @@
 import React from 'react';
 import AddWordForm from './AddWordForm';
 import WordItem from './WordItem';
-import iconSave from "./assets/icon-save.svg";
-import iconAdd from "./assets/icon-add.svg";
-import iconPen from "./assets/icon-pen.svg";
-import iconDelete from "./assets/icon-delete.svg";
+import iconSave from "../../assets/images/icon-save.svg";
+import iconAdd from "../../assets/images/icon-add.svg";
+import iconPen from "../../assets/images/icon-pen.svg";
+import iconDelete from "../../assets/images/icon-delete.svg";
 export default class List extends React.Component{
     constructor(props) {
         super(props);
@@ -56,6 +56,7 @@ export default class List extends React.Component{
             }})
     }
 
+
     deleteWord = () => {
         const requestOptions = {
             method: 'POST',
@@ -63,7 +64,7 @@ export default class List extends React.Component{
                 id: this.state.id
                 }
             };
-        fetch(`/api/words/${this.id}/delete`, requestOptions)
+        fetch(`/api/words/${this.state.id}/delete`, requestOptions)
         .then(response => {
             if (response.ok) {
                 response.json();
